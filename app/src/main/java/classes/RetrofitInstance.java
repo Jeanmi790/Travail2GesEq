@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://cours.cegep3r.info/H2024/420636RI/GR02/j_hebert/php"; //Serveur distant
+    private static final String BASE_URL = "http://cours.cegep3r.info/"; //Serveur distant
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {

@@ -5,9 +5,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.travail2geseq.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class EquipesViewHolder extends RecyclerView.ViewHolder {
     private IEquipe iEquipe;
     private List<Equipe> listeEquipe;
 
-    public EquipesViewHolder(View itemView, List<Equipe> listeEquipe) {
+    public EquipesViewHolder(@NonNull View itemView, List<Equipe> listeEquipe) {
         super(itemView);
         iEquipe = (IEquipe) itemView.getContext();
         this.listeEquipe = listeEquipe;
@@ -52,12 +54,8 @@ public class EquipesViewHolder extends RecyclerView.ViewHolder {
         return imgLogoEquipe;
     }
 
-    public void setImgLogoEquipe(ImageView imgLogoEquipe) {
-        this.imgLogoEquipe = imgLogoEquipe;
-    }
-
-    public void setImgLogoEquipe(Drawable logo) {
-        this.imgLogoEquipe.setImageDrawable(logo);
+    public void setImgLogoEquipe(String url) {
+        Picasso.get().load(url).into(imgLogoEquipe);
     }
 
 }

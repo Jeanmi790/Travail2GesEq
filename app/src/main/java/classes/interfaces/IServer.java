@@ -9,17 +9,18 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface IServer {
 
-    @GET("/getJoueur.php")
+    @GET("H2024/420636RI/GR02/j_hebert/php/geJoueurs.php")
     Call<List<Equipe>> getListeEquipes();
 
-    @GET("/getJoueursEquipe.php")
-    Call<List<Joueur>> getListeJoueursEquipe();
+    @GET("H2024/420636RI/GR02/j_hebert/php/getJoueursEquipe.php")
+    Call<List<Joueur>> getListeJoueursEquipe(@Query("idEquipe") int idEquipe);
 
 
-    @POST("/addJoueur.php")
+    @POST("H2024/420636RI/GR02/j_hebert/php/addJoueur.php")
     @FormUrlEncoded
     Call<Boolean> ajoutJoueur(@Field("nom") String nom,
                               @Field("prenom") String prenom,

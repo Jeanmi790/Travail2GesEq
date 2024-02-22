@@ -1,7 +1,8 @@
 package classes.adapters;
+
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,21 +14,28 @@ import java.util.List;
 import classes.interfaces.IEquipe;
 import classes.objects.Equipe;
 import classes.viewholder.EquipesViewHolder;
+import com.squareup.picasso.Picasso;
 
-public class AdapterListeEquipe extends RecyclerView.Adapter<EquipesViewHolder>{
+public class AdapterListeEquipe extends RecyclerView.Adapter<EquipesViewHolder> {
 
 
     private List<Equipe> listeEquipe;
-    private IEquipe iEquipe;
+    private final IEquipe iEquipe;
 
     public AdapterListeEquipe(List<Equipe> listeEquipe, IEquipe iEquipe) {
         this.listeEquipe = listeEquipe;
         this.iEquipe = iEquipe;
 
     }
+
     public List<Equipe> getListeEquipe() {
         return listeEquipe;
     }
+
+    public void setListeEquipe(List<Equipe> listeEquipe) {
+        this.listeEquipe = listeEquipe;
+    }
+
 
     @NonNull
     @Override
