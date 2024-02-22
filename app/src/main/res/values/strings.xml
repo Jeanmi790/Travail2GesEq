@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Travail2GesEq</string>
+    <string name="liste_des_quipes_d_hockey">Liste des équipes d\'Hockey</string>
+    <string name="nom">Nom:</string>
+    <string name="pr_nom">Prénom:</string>
+    <string name="nom_du_joueur">Nom du joueur</string>
+    <string name="pr_nom_du_joueur">Prénom du joueur</string>
+    <string name="avatar_joueur">avatar joueur</string>
+    <string name="ajouter_un_joueur">Ajouter un joueur</string>
 </resources>

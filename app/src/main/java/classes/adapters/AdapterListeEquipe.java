@@ -27,6 +27,11 @@ public class AdapterListeEquipe extends RecyclerView.Adapter<EquipesViewHolder> 
         this.iEquipe = iEquipe;
 
     }
+    public AdapterListeEquipe(List<Equipe> listeEquipe) {
+        this.listeEquipe = listeEquipe;
+        this.iEquipe = null;
+
+    }
 
     public List<Equipe> getListeEquipe() {
         return listeEquipe;

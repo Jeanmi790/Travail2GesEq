@@ -22,7 +22,8 @@ public interface IServer {
 
     @POST("H2024/420636RI/GR02/j_hebert/php/addJoueur.php")
     @FormUrlEncoded
-    Call<Boolean> ajoutJoueur(@Field("nom") String nom,
+    Call<Boolean> ajoutJoueur(@Field("idJoueur") int idJoueur,
+                              @Field("nom") String nom,
                               @Field("prenom") String prenom,
                               @Field("idEquipe") int idEquipe);
 
