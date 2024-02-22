@@ -1,10 +1,16 @@
 package classes.objects;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Joueur {
 
+    @SerializedName("idJoueur")
     private int idJoueur;
+    @SerializedName("nom")
     private String nom;
+    @SerializedName("prenom")
     private String prenom;
+    @SerializedName("idEquipe")
     private int idEquipe;
 
     public Joueur(String nom, String prenom, int idEquipe) {

@@ -3,6 +3,7 @@ package com.example.travail2geseq;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import classes.RetrofitInstance;
 import classes.adapters.AdapterListeEquipe;
@@ -56,7 +58,6 @@ public class ShowEquipesActivity extends AppCompatActivity implements IEquipe {
 
 
     private void LoadRefsForAttributes() {
-        //GetListeEquipesFromlocal();
         GetListeEquipesFromServer();
         rvEquipes = findViewById(R.id.rvEquipes);
         showEquipesContext = this;
@@ -76,30 +77,19 @@ public class ShowEquipesActivity extends AppCompatActivity implements IEquipe {
             @Override
             public void onResponse(Call<List<Equipe>> call, Response<List<Equipe>> response) {
 
-                if(!response.isSuccessful()) {
-                    return;
-                }
                 listeEquipe = response.body();
-                aListeEquipe = new AdapterListeEquipe(listeEquipe, ShowEquipesActivity.this);
-                rvEquipes.setAdapter(aListeEquipe);
+                aListeEquipe.setListeEquipe(listeEquipe);
+                aListeEquipe.notifyDataSetChanged();
+
 
             }
 
             @Override
             public void onFailure(Call<List<Equipe>> call, Throwable t) {
+                Logger.getLogger("ShowEquipesActivity").warning(t.getMessage());
                 Toast.makeText(showEquipesContext, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-    private void GetListeEquipesFromlocal() {
-
-    listeEquipe.add(new Equipe(1, "Les remparts de Québec", "https://assets.leaguestat.com/lhjmq/logos/168x127/9_193.png"));
-    listeEquipe.add(new Equipe(2, "Les Tigres de Victoriaville", "https://assets.leaguestat.com/lhjmq/logos/168x127/17_193.png"));
-    listeEquipe.add(new Equipe(3, "Les Voltigeurs de Drummondville", "https://assets.leaguestat.com/lhjmq/logos/168x127/14_193.png"));
-    listeEquipe.add(new Equipe(4, "Les Cataractes de Shawinigan", "https://assets.leaguestat.com/lhjmq/logos/168x127/2_193.png"));
-    listeEquipe.add(new Equipe(5, "Les Olympiques de Gatineau", "https://assets.leaguestat.com/lhjmq/logos/168x127/1_197.png"));
-    listeEquipe.add(new Equipe(6, "Les Foreurs de Val-d'Or", "https://assets.leaguestat.com/lhjmq/logos/168x127/18_193.png"));
-
     }
 
     private void MakeResultLaucher(){

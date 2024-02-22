@@ -21,6 +21,10 @@ public class AdapterListeJoueur extends RecyclerView.Adapter<JoueursViewHolder> 
         this.listeJoueur = listeJoueur;
     }
 
+    public void setListeJoueur(List<Joueur> listeJoueur) {
+        this.listeJoueur = listeJoueur;
+    }
+
     @NonNull
     @Override
     public JoueursViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +42,6 @@ public class AdapterListeJoueur extends RecyclerView.Adapter<JoueursViewHolder> 
 
     @Override
     public int getItemCount() {
-       return listeJoueur.size();
+        return listeJoueur.size();
     }
 }

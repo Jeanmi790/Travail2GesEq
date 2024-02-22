@@ -1,18 +1,15 @@
 package classes.objects;
 
-import android.graphics.drawable.Drawable;
+import com.google.gson.annotations.SerializedName;
 
 public class Equipe {
 
-
+    @SerializedName("idEquipe")
     private int idEquipe;
+    @SerializedName("nomEquipe")
     private String nomEquipe;
+    @SerializedName("logo")
     private String logo;
-
-    public Equipe(String nomEquipe, String logo) {
-        this.nomEquipe = nomEquipe;
-        this.logo = logo;
-    }
 
     public Equipe(int idEquipe, String nomEquipe, String logo) {
         this.idEquipe = idEquipe;

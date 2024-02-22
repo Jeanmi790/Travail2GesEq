@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface IServer {
 
-    @GET("H2024/420636RI/GR02/j_hebert/php/geJoueurs.php")
+    @GET("/H2024/420636RI/GR02/j_hebert/php/getEquipes.php")
     Call<List<Equipe>> getListeEquipes();
 
     @GET("H2024/420636RI/GR02/j_hebert/php/getJoueursEquipe.php")
