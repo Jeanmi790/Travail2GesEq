@@ -14,14 +14,15 @@ public interface IServer {
 
     @GET("/getJoueur.php")
     Call<List<Equipe>> getListeEquipes();
+
     @GET("/getJoueursEquipe.php")
     Call<List<Joueur>> getListeJoueursEquipe();
-
 
 
     @POST("/addJoueur.php")
     @FormUrlEncoded
     Call<Boolean> ajoutJoueur(@Field("nom") String nom,
-                             @Field("prenom") String prenom);
+                              @Field("prenom") String prenom,
+                              @Field("idEquipe") int idEquipe);
 
 }

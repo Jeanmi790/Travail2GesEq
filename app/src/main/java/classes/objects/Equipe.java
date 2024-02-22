@@ -1,18 +1,20 @@
 package classes.objects;
 
+import android.graphics.drawable.Drawable;
+
 public class Equipe {
 
 
     private int idEquipe;
     private String nomEquipe;
-    private String logo;
+    private Drawable logo;
 
-    public Equipe(String nomEquipe, String logo) {
+    public Equipe(String nomEquipe, Drawable logo) {
         this.nomEquipe = nomEquipe;
         this.logo = logo;
     }
 
-    public Equipe(int idEquipe, String nomEquipe, String logo) {
+    public Equipe(int idEquipe, String nomEquipe, Drawable logo) {
         this.idEquipe = idEquipe;
         this.nomEquipe = nomEquipe;
         this.logo = logo;
@@ -35,11 +37,11 @@ public class Equipe {
         this.nomEquipe = nomEquipe;
     }
 
-    public String getLogo() {
+    public Drawable getLogo() {
         return logo;
     }
 
-    public void setLogo(String logo) {
+    public void setLogo(Drawable logo) {
         this.logo = logo;
     }
 }
