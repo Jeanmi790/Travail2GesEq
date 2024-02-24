@@ -90,21 +90,27 @@ public class AddJoueurDialog extends AlertDialog {
         if (etvNomJoueur.returnNumberOfErrors() == 0 && etvPrenomJoueur.returnNumberOfErrors() == 0) {
             IServer iServer = RetrofitInstance.getRetrofitInstance().create(IServer.class);
 
-            Call<Boolean> call = iServer.ajoutJoueur( idEquipe ,Objects.requireNonNull(tietNomJoueur.getText()).toString(), Objects.requireNonNull(tietPrenomJoueur.getText()).toString());
-            Log.d("AddJoueurDialog", "Info joueur: "+Objects.requireNonNull(tietNomJoueur.getText()).toString() + " " + Objects.requireNonNull(tietPrenomJoueur.getText()).toString() + " " + idEquipe);
+            Call<Boolean> call = iServer.ajoutJoueur(idEquipe, Objects.requireNonNull(tietNomJoueur.getText()).toString(), Objects.requireNonNull(tietPrenomJoueur.getText()).toString());
+            Log.d("AddJoueurDialog", "Info joueur: " + Objects.requireNonNull(tietNomJoueur.getText()) + " " + Objects.requireNonNull(tietPrenomJoueur.getText()) + " " + idEquipe);
             call.enqueue(new Callback<Boolean>() {
                 @Override
-                public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
+                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                    Boolean result = response.body();
                     Log.d("AddJoueurDialog", "onResponse: " + response.body());
-                    iInteractionServer.OnAddJoueur();
-                    Toast.makeText(getContext(), "Joueur ajouté", Toast.LENGTH_SHORT).show();
-                    etvNomJoueur.ResetError();
-                    etvPrenomJoueur.ResetError();
-                    etvNomJoueur.ResetInput();
-                    etvPrenomJoueur.ResetInput();
+
+                    if (result != null && result) {
+
+                        iInteractionServer.OnAddJoueur();
+                        Toast.makeText(getContext(), "Joueur ajouté", Toast.LENGTH_SHORT).show();
+                        etvNomJoueur.ResetError();
+                        etvPrenomJoueur.ResetError();
+                        etvNomJoueur.ResetInput();
+                        etvPrenomJoueur.ResetInput();
+
+                    }
+
+                    Toast.makeText(getContext(), "Erreur lors de l'ajout du joueur", Toast.LENGTH_SHORT).show();
                     dismiss();
-
-
                 }
 
                 @Override
