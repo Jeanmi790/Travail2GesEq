@@ -7,4 +7,5 @@
     <string name="pr_nom_du_joueur">Prénom du joueur</string>
     <string name="avatar_joueur">avatar joueur</string>
     <string name="ajouter_un_joueur">Ajouter un joueur</string>
+    <string name="annuler">Annuler</string>
 </resources>
