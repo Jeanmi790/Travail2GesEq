@@ -1,12 +1,8 @@
-package classes;
+package classes.dialogs;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Debug;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +15,10 @@ import com.example.travail2geseq.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
-import java.util.logging.Logger;
 
+import classes.interfaces.IServerLocal;
+import classes.validators.EditTextValidator;
+import classes.RetrofitInstance;
 import classes.interfaces.IInteractionServer;
 import classes.interfaces.IServer;
 import retrofit2.Call;
@@ -88,6 +86,8 @@ public class AddJoueurDialog extends AlertDialog {
 
     private void AddJoueurToDB(View view) {
         if (etvNomJoueur.returnNumberOfErrors() == 0 && etvPrenomJoueur.returnNumberOfErrors() == 0) {
+
+            //IServerLocal iServerLocal = RetrofitInstance.getRetrofitInstance().create(IServerLocal.class);
             IServer iServer = RetrofitInstance.getRetrofitInstance().create(IServer.class);
 
             Call<Boolean> call = iServer.ajoutJoueur(idEquipe, Objects.requireNonNull(tietNomJoueur.getText()).toString(), Objects.requireNonNull(tietPrenomJoueur.getText()).toString());
@@ -107,9 +107,10 @@ public class AddJoueurDialog extends AlertDialog {
                         etvNomJoueur.ResetInput();
                         etvPrenomJoueur.ResetInput();
 
+                    } else {
+                        Toast.makeText(getContext(), "Erreur lors de l'ajout du joueur", Toast.LENGTH_SHORT).show();
                     }
 
-                    Toast.makeText(getContext(), "Erreur lors de l'ajout du joueur", Toast.LENGTH_SHORT).show();
                     dismiss();
                 }
 

@@ -1,4 +1,4 @@
-package classes;
+package classes.validators;
 
 import android.service.autofill.RegexValidator;
 import android.widget.EditText;

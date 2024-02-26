@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitInstance {
     private static Retrofit retrofit;
     private static final String BASE_URL = "http://cours.cegep3r.info/"; //Serveur distant
-
+    private static final String BASE_URL_Local = "http://10.0.2.2"; //Localhost
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new retrofit2.Retrofit.Builder()

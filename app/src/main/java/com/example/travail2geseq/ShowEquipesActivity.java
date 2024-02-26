@@ -24,6 +24,7 @@ import classes.RetrofitInstance;
 import classes.adapters.AdapterListeEquipe;
 import classes.interfaces.IEquipe;
 import classes.interfaces.IServer;
+import classes.interfaces.IServerLocal;
 import classes.objects.Equipe;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,6 +71,7 @@ public class ShowEquipesActivity extends AppCompatActivity implements IEquipe {
     }
 
     private void GetListeEquipesFromServer() {
+        //IServerLocal iServer = RetrofitInstance.getRetrofitInstance().create(IServerLocal.class);
         IServer iServer = RetrofitInstance.getRetrofitInstance().create(IServer.class);
         Call<List<Equipe>> call = iServer.getListeEquipes();
         call.enqueue(new Callback<List<Equipe>>() {

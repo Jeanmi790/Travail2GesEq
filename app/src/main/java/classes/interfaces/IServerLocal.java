@@ -11,20 +11,20 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-public interface IServer {
+public interface IServerLocal {
 
-    @GET("/H2024/420636RI/GR02/j_hebert/php/getEquipes.php")
+    @GET("/getEquipes.php")
     Call<List<Equipe>> getListeEquipes();
 
-    @GET("/H2024/420636RI/GR02/j_hebert/php/getJoueursEquipe.php")
+    @GET("/getJoueursEquipe.php")
     Call<List<Joueur>> getListeJoueursEquipe(@Query("idEquipe") int idEquipe);
 
 
-    @POST("/H2024/420636RI/GR02/j_hebert/php/addJoueur.php")
+    @POST("/addJoueur.php")
     @FormUrlEncoded
     Call<Boolean> ajoutJoueur(@Field("idEquipe") int idEquipe,
                               @Field("nom") String nom,
                               @Field("prenom") String prenom
-                              );
+    );
 
 }

@@ -1,39 +1,30 @@
 package com.example.travail2geseq;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.logging.Logger;
 
-import classes.AddJoueurDialog;
+import classes.dialogs.AddJoueurDialog;
 import classes.RetrofitInstance;
 import classes.adapters.AdapterListeJoueur;
 import classes.interfaces.IInteractionServer;
 import classes.interfaces.IServer;
+import classes.interfaces.IServerLocal;
 import classes.objects.Equipe;
 import classes.objects.Joueur;
 import retrofit2.Call;
@@ -116,6 +107,7 @@ public class ShowJoueursEquipeActivity extends AppCompatActivity implements IInt
     }
 
     private void GetListeJoueursFromServer() {
+        //IServerLocal iServer = RetrofitInstance.getRetrofitInstance().create(IServerLocal.class);
         IServer iServer = RetrofitInstance.getRetrofitInstance().create(IServer.class);
 
         Call<List<Joueur>> call = iServer.getListeJoueursEquipe(equipe.getIdEquipe());
